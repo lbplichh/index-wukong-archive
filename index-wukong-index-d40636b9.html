@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>悟空体育 · 轻快开启</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f3f4f6;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 960px;
+            width: 100%;
+        }
+
+        /* 柔和卡片 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 28px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* hero 段落：开场短句 */
+        .hero-short {
+            font-size: 1.8rem;
+            font-weight: 350;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            color: #0f172a;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-short em {
+            font-style: normal;
+            color: #2563eb;
+            font-weight: 420;
+        }
+
+        /* 承接段落 */
+        .intro-text {
+            font-size: 1.05rem;
+            color: #334155;
+            margin-bottom: 1.4rem;
+        }
+
+        .intro-text a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .intro-text a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* 特点列表：卡片内两列 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 2rem;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        .feature-item {
+            border-left: 3px solid #dbeafe;
+            padding-left: 1rem;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 550;
+            color: #1e293b;
+            margin-bottom: 0.15rem;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* 场景区（温和结尾前） */
+        .scene-tag {
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #1e293b;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .closing-note {
+            font-size: 1rem;
+            color: #334155;
+            border-top: 1px solid #eef2f6;
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .closing-note a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .closing-note a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* FAQ摘要用微卡片 */
+        .faq-mini {
+            background: #fafbfc;
+            border: 1px solid #eef2f6;
+            border-radius: 18px;
+            padding: 1.4rem 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .faq-mini p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: #334155;
+        }
+
+        .faq-mini strong {
+            color: #0f172a;
+            font-weight: 560;
+        }
+
+        .faq-mini .hint {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e2e8f0;
+            margin: 1.2rem 0 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 24px;
+            }
+
+            .hero-short {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .scene-tag {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero-short {
+                font-size: 1.3rem;
+            }
+            .intro-text {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* 辅助 */
+        .small-note {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 卡片1：开场短句 + 承接段落 + 自然链接 -->
+        <div class="card">
+            <div class="hero-short">
+                一眼认出 · <em>悟空体育</em>
+            </div>
+            <div class="intro-text">
+                如果你刚打开这个页面，可能正在找一处能快速了解体育资讯、赛事动态或运动文化的地方。 
+                <a href="https://index-wukong.com">悟空体育</a> 就是为此而设——它把零散的信息组织成清晰的结构，让浏览体验更轻快。
+            </div>
+            <div class="intro-text" style="margin-bottom: 0.2rem;">
+                没有冗余的跳转，也没有复杂层级。从首页开始，你就能感知到内容的脉络：赛事、社区、数据、视角……每个板块都指向同一个目标——让人更顺畅地接触体育世界。
+            </div>
+        </div>
+
+        <!-- 卡片2：特点列表 + 场景 hint -->
+        <div class="card">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap;">
+                <h2 style="font-weight: 450; font-size: 1.25rem; color: #0f172a; letter-spacing: -0.01em;">内容特点 · 一瞥</h2>
+                <span style="font-size: 0.85rem; color: #64748b;">基于实际使用感受</span>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>赛事聚合</strong>
+                    <span>主流联赛、杯赛、热点对战，按时间与关注度梳理，省去四处翻找的麻烦。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>运动视角</strong>
+                    <span>不只比分，还有战术拆解、人物特写、趋势观察，适合想看得更深一点的爱好者。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>社区氛围</strong>
+                    <span>讨论区自然沉淀观点，没有过度煽动，更多是球迷之间坦诚的交流与分享。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>界面克制</strong>
+                    <span>浅色基调、清晰分区、无弹窗干扰。信息密度刚好，阅读节奏由你控制。</span>
+                </div>
+            </div>
+
+            <!-- 用场景标签代替额外列表 -->
+            <div style="margin-top: 1.8rem;">
+                <span class="scene-tag">⚽ 赛前前瞻</span>
+                <span class="scene-tag">🏀 赛后复盘</span>
+                <span class="scene-tag">🎾 冷门项目</span>
+                <span class="scene-tag">📊 数据速览</span>
+                <span class="scene-tag">📰 人物访谈</span>
+            </div>
+            <div style="font-size: 0.9rem; color: #475569; margin-top: 0.8rem;">
+                无论你是偶尔关注比分，还是习惯研究战术，都能在这里找到适合自己的节奏。
+            </div>
+        </div>
+
+        <!-- 卡片3：FAQ摘要风格 + 温和结尾 -->
+        <div class="card">
+            <h2 style="font-weight: 450; font-size: 1.2rem; color: #0f172a; margin-bottom: 1rem;">常见问题 · 短摘</h2>
+
+            <div class="faq-mini">
+                <p><strong>Q：这个网站主要提供什么？</strong><br>
+                A：围绕体育内容的信息聚合：赛事动态、深度文章、社区讨论、实用数据。不卖课、不推销，纯粹的内容平台。</p>
+                <p><strong>Q：内容更新频率如何？</strong><br>
+                A：重点赛事期间保持实时或准实时更新，日常有专栏作者和社区用户共同产出，节奏稳定但不嘈杂。</p>
+                <p><strong>Q：是否需要注册才能浏览？</strong><br>
+                A：大部分内容对访客开放，部分互动功能（如评论、收藏）可自愿注册参与。</p>
+                <div class="hint">—— 更多细节可以直接在站内各个板块了解，或通过搜索找到你感兴趣的话题。</div>
+            </div>
+
+            <hr>
+
+            <!-- 温和结尾，句子中包含链接 -->
+            <div class="closing-note">
+                对体育内容的要求其实很简单：及时、准确、不浮夸。如果你也有同样的期待，不妨从 
+                <a href="https://index-wukong.com">悟空体育</a> 开始，慢慢翻翻最近的赛况或专栏，看看是否符合你的浏览习惯。
+            </div>
+            <div style="font-size: 0.9rem; color: #475569; margin-top: 1rem;">
+                不需要刻意记住什么，把它当作一个安静的体育阅读角落就好。
+            </div>
+        </div>
+
+        <!-- 极简脚注 -->
+        <div class="small-note">
+            · 基于真实内容结构 · 温和呈现 ·
+        </div>
+    </div>
+</body>
+</html>
