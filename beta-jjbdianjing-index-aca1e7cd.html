@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞技宝 · 知识型介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9fafb;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 0 4rem 0;
+    }
+
+    /* ---------- 轻量导航 ---------- */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0 2.5rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .top-nav .brand {
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+      color: #0f172a;
+    }
+
+    .top-nav .brand span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      color: #475569;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0f172a;
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      padding: 4rem 0 2.5rem 0;
+    }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 650;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .hero .subhead {
+      margin-top: 1rem;
+      font-size: 1.125rem;
+      color: #475569;
+      max-width: 560px;
+    }
+
+    /* ---------- 通用段落 ---------- */
+    .section {
+      margin-top: 2.8rem;
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      font-weight: 620;
+      letter-spacing: -0.01em;
+      border-left: 4px solid #2563eb;
+      padding-left: 0.9rem;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+      color: #334155;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- 场景卡片模块 ---------- */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.8rem 0 1.2rem 0;
+    }
+
+    .scene-card {
+      background-color: #ffffff;
+      border: 1px solid #e9edf3;
+      border-radius: 16px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      transition: box-shadow 0.25s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .scene-card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #0f172a;
+    }
+
+    .scene-card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* ---------- FAQ摘要 ---------- */
+    .faq-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #e9edf3;
+    }
+
+    .faq-item:first-of-type {
+      border-top: 1px solid #e9edf3;
+    }
+
+    .faq-item dt {
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .faq-item dd {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    .faq-more {
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+
+    /* ---------- 内嵌链接样式 ---------- */
+    .text-link {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .text-link:hover {
+      color: #1e3a8a;
+      text-decoration: underline;
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 680px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .scene-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .page-wrap {
+        padding: 1.5rem 0 3rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero .subhead {
+        font-size: 1rem;
+      }
+
+      .section h2 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* 极简留白微调 */
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 顶部导航 -->
+  <nav class="top-nav">
+    <div class="brand">主题<span>笔记</span></div>
+    <ul class="nav-links">
+      <li><a href="#intro">概述</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">说明</a></li>
+    </ul>
+  </nav>
+
+  <!-- hero 区 -->
+  <header class="hero">
+    <h1>从项目视角理解<br>竞技宝的定位与构成</h1>
+    <div class="subhead">
+      <a href="https://beta-jjbdianjing.com" class="text-link">竞技宝</a> 是一个聚焦于电子竞技信息与服务的平台，其结构涵盖赛事资讯、数据分析与社区互动等多个层面。以下从内容逻辑与使用场景出发，梳理其核心框架。
+    </div>
+  </header>
+
+  <!-- 介绍段落：从关键词背后的主题展开 -->
+  <section class="section" id="intro">
+    <h2>项目逻辑与主题背景</h2>
+    <p>
+      电子竞技的快速发展催生了大量垂直工具与内容聚合站点。在这一背景下，<strong>竞技宝</strong> 所承载的并非单一赛事数据，而是将职业联赛、战队动态、选手数据以及战术讨论整合为连贯的信息流。平台设计上偏向实用导向，降低信息过载，同时保留深度浏览入口。
+    </p>
+    <p>
+      从页面构建来看，首页作为内容枢纽，需要平衡推荐时效、导航清晰度与信息密度。模块化布局成为自然选择：顶部导航承载主要功能出口，中部以卡片区展示热门赛事或分析内容，底部或侧栏补充常见问题与辅助说明。这种结构既适应新访客快速理解，也为高频用户提供快捷路径。
+    </p>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <section class="section" id="scenes">
+    <h2>三类典型使用场景</h2>
+    <div class="scene-grid">
+      <div class="scene-card">
+        <div class="icon">📊</div>
+        <h3>赛事数据查阅</h3>
+        <p>用户浏览实时比分、历史对阵记录与选手个人数据。页面通过表格与可视化卡片呈现，减少手动检索成本。</p>
+      </div>
+      <div class="scene-card">
+        <div class="icon">💬</div>
+        <h3>社区讨论与解读</h3>
+        <p>比赛结束后，讨论区生成战术复盘帖与赛后分析。平台聚合高赞观点，帮助用户快速了解舆论焦点。</p>
+      </div>
+      <div class="scene-card">
+        <div class="icon">📡</div>
+        <h3>赛程与提醒</h3>
+        <p>基于用户关注的战队或联赛，推送即将开始的比赛与重要时间点。赛程页面按日期、时段、项目筛选，层级清晰。</p>
+      </div>
+    </div>
+    <p style="font-size:0.95rem; color:#64748b; margin-top:0.3rem;">
+      以上三个场景均可在 <a href="https://beta-jjbdianjing.com" class="text-link">竞技宝</a> 的首页及二级页面中找到对应入口，设计逻辑遵循“信息前置 + 操作后置”。
+    </p>
+  </section>
+
+  <!-- 常见说明 (FAQ摘要) -->
+  <section class="section" id="faq">
+    <h2>常见说明与边界</h2>
+    <dl class="faq-item">
+      <dt>内容更新频率如何？</dt>
+      <dd>赛事数据在比赛结束后数分钟内同步，社区内容由用户与编辑共同维护，日常保持更新。重大赛事期间会增加专题页面。</dd>
+    </dl>
+    <dl class="faq-item">
+      <dt>是否需要注册才能浏览？</dt>
+      <dd>大部分信息（赛事结果、赛程、基础数据）无需登录即可查阅。参与讨论或收藏功能需要注册账户。</dd>
+    </dl>
+    <dl class="faq-item">
+      <dt>平台数据来源是什么？</dt>
+      <dd>数据主要来自官方赛事接口与合作数据服务商，部分历史数据经过人工校对。具体赛事可能有细微延迟。</dd>
+    </dl>
+    <div class="faq-more">
+      更多关于平台机制、隐私处理与联系方式，可前往 <a href="https://beta-jjbdianjing.com" class="text-link">竞技宝</a> 的帮助页面了解。
+    </div>
+  </section>
+
+  <!-- 微脚注（信息完整） -->
+  <hr>
+  <footer style="font-size:0.85rem; color:#94a3b8; text-align:center; margin-top:1rem;">
+    内容基于公开信息整理 · 页面仅供知识介绍
+  </footer>
+</div>
+</body>
+</html>
