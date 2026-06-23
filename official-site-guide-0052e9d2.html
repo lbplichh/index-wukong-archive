@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hth · 资料整理与信息索引指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fde8d8 0%, #f5d3b3 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.6;
+            color: #2d2a27;
+        }
+
+        .page {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 主卡片容器 */
+        .container {
+            background: #fffaf5;
+            border-radius: 36px;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 40, 0.2);
+            padding: 2.8rem 2.8rem 3.2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+            body {
+                padding: 1.2rem 0.6rem;
+            }
+        }
+
+        /* 标题区 */
+        .hero {
+            margin-bottom: 2.4rem;
+            border-bottom: 2px dashed #e6d3c0;
+            padding-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #5a3f2b;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero .sub {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.6rem 1rem;
+            font-size: 0.95rem;
+            color: #7b6652;
+            margin-top: 0.2rem;
+        }
+
+        .hero .sub a {
+            color: #a76f44;
+            text-decoration: none;
+            font-weight: 500;
+            background: #f2e3d6;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+            transition: background 0.15s;
+        }
+
+        .hero .sub a:hover {
+            background: #e6ceba;
+        }
+
+        /* 目录式布局 —— 知识库网格 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.6rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .card-topic {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(150, 100, 70, 0.06);
+            padding: 1.4rem 1.2rem 1.2rem;
+            transition: transform 0.1s, box-shadow 0.2s;
+            border: 1px solid #f2e4d9;
+        }
+
+        .card-topic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(150, 100, 70, 0.08);
+        }
+
+        .card-topic h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #543f2f;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-topic p {
+            font-size: 0.92rem;
+            color: #4f4034;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-topic .badge {
+            display: inline-block;
+            background: #ecdccc;
+            color: #543f2f;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-top: 0.25rem;
+        }
+
+        /* 说明区 */
+        .description-block {
+            background: #f7efe7;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 1.6rem;
+        }
+
+        .description-block h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4d3727;
+            margin-bottom: 0.7rem;
+        }
+
+        .description-block p {
+            margin-bottom: 0.6rem;
+        }
+
+        .description-block strong {
+            color: #754f32;
+        }
+
+        /* 提示区 */
+        .tip-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.8rem 0;
+        }
+
+        .tip-card {
+            flex: 1 1 200px;
+            background: #fef9f4;
+            border-radius: 18px;
+            padding: 1.2rem 1.2rem 1rem;
+            border-left: 5px solid #dbb394;
+        }
+
+        .tip-card .emoji-bg {
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .tip-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4a3628;
+            margin-bottom: 0.4rem;
+        }
+
+        .tip-card p {
+            font-size: 0.9rem;
+            color: #564a3f;
+        }
+
+        /* 相关信息区 (FAQ 摘要 + 链接) */
+        .related {
+            background: #f5ebe2;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem 1.4rem;
+            margin: 1.8rem 0 0.4rem;
+        }
+
+        .related h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4d3727;
+            margin-bottom: 0.8rem;
+        }
+
+        .related-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.4rem 1.2rem;
+            border-bottom: 1px solid #e5d4c5;
+            padding: 0.7rem 0;
+        }
+
+        .related-item:last-child {
+            border-bottom: none;
+        }
+
+        .related-item .q {
+            font-weight: 500;
+            color: #3f2e20;
+            min-width: 100px;
+        }
+
+        .related-item .a {
+            color: #5e4b3b;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .inline-link {
+            color: #a76f44;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #dbb394;
+            transition: border-bottom 0.1s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 1px solid #8a5c3a;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f6a59;
+            border-top: 1px solid #e8d9cb;
+            padding-top: 1.8rem;
+        }
+
+        .footer-note a {
+            color: #7f5d42;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="container">
+        <!-- hero + 目录标题 -->
+        <div class="hero">
+            <h1>📁 hth 信息索引·知识库</h1>
+            <div class="sub">
+                <span>资料整理 / 索引入口 / 结构化笔记</span>
+                <span><a href="https://official-site-hth.com">hth</a> · 持续更新</span>
+            </div>
+        </div>
+
+        <!-- 目录感布局：卡片网格 -->
+        <div class="index-grid">
+            <div class="card-topic">
+                <h3>📋 基础资料</h3>
+                <p>站点结构、更新日志、版本归档。适合首次接触时浏览。</p>
+                <span class="badge">6 项</span>
+            </div>
+            <div class="card-topic">
+                <h3>📌 使用场景</h3>
+                <p>常见应用方式与配置参考，按实际需求分类整理。</p>
+                <span class="badge">4 类</span>
+            </div>
+            <div class="card-topic">
+                <h3>🔍 问题索引</h3>
+                <p>FAQ 摘要与排查思路，快速定位已知情况。</p>
+                <span class="badge">12 条</span>
+            </div>
+            <div class="card-topic">
+                <h3>📎 参考链接</h3>
+                <p>相关资源、外部说明与延伸阅读材料。</p>
+                <span class="badge">5 篇</span>
+            </div>
+        </div>
+
+        <!-- 说明区：资料整理角度 -->
+        <div class="description-block">
+            <h2>从资料整理到索引体系</h2>
+            <p>
+                本页围绕 <strong>hth</strong> 构建了一个轻量知识库入口。以目录式卡片分类，将常见信息分为基础资料、使用场景、问题索引与参考链接四个模块。每个模块均保持独立自洽，同时通过统一标签与交叉引用形成网状关联。
+            </p>
+            <p>
+                内容来源主要来自对公开文档、社区讨论以及实践经验的整理与重组。所有条目均标注了更新状态，方便使用者根据自身需要选择查阅顺序。如需直接获取最新信息，可前往 <a href="https://official-site-hth.com" class="inline-link">hth</a> 查看站点本身。
+            </p>
+            <p>
+                索引方法采用“主题 + 标签”双维度组织：主题卡片作为目录索引，标签则可快速筛选同类别内容。这一结构在保持简洁的同时，也便于后续扩充。
+            </p>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="tip-area">
+            <div class="tip-card">
+                <div class="emoji-bg">💡</div>
+                <h4>检索建议</h4>
+                <p>先浏览「基础资料」建立整体印象，再根据具体需求选择对应场景卡片。</p>
+            </div>
+            <div class="tip-card">
+                <div class="emoji-bg">📌</div>
+                <h4>内容时效</h4>
+                <p>每个条目末尾标注了最近核实日期。超过三个月的内容建议结合原站确认。</p>
+            </div>
+            <div class="tip-card">
+                <div class="emoji-bg">🧩</div>
+                <h4>交叉引用</h4>
+                <p>部分卡片之间有相互链接，点击标签可跳转到相关模块，形成浏览路径。</p>
+            </div>
+        </div>
+
+        <!-- 相关信息区：FAQ 摘要 + 附加说明 -->
+        <div class="related">
+            <h2>📖 相关信息与 FAQ 摘要</h2>
+            <div class="related-item">
+                <span class="q">hth 的基础定位？</span>
+                <span class="a">一个以信息整理和索引为核心的站点，提供结构化资料查阅。</span>
+            </div>
+            <div class="related-item">
+                <span class="q">如何快速找到所需内容？</span>
+                <span class="a">利用顶部分类卡片缩小范围，再结合标签和内部链接进一步筛选。</span>
+            </div>
+            <div class="related-item">
+                <span class="q">是否支持外部引用？</span>
+                <span class="a">所有公开条目均可合理引用，建议注明来源为 <a href="https://official-site-hth.com" class="inline-link">hth</a>。</span>
+            </div>
+            <div class="related-item">
+                <span class="q">内容更新频率？</span>
+                <span class="a">不定期根据文档变动和社区反馈进行补充与修订，重大更新会标注日期。</span>
+            </div>
+        </div>
+
+        <!-- 页脚 + 再次自然嵌入链接 -->
+        <div class="footer-note">
+            <p>
+                整理自公开资料，仅供参考。如需访问原始站点，请直接使用 <a href="https://official-site-hth.com">hth</a> 链接。
+            </p>
+            <p style="margin-top: 0.6rem; opacity: 0.7;">资料索引 · 版本 2025.03</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
